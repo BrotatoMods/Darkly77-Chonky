@@ -9,17 +9,17 @@ var trans_dir = ""
 
 
 func _init(modLoader = ModLoader):
-	ModLoaderUtils.log_info("Init", CHONKY_LOG)
-	dir = modLoader.UNPACKED_DIR + MOD_DIR
+	ModLoaderLog.info("Init", CHONKY_LOG)
+	dir = ModLoaderMod.get_unpacked_dir() + MOD_DIR
 	ext_dir = dir + "extensions/"
 	trans_dir = dir + "translations/"
 
 	# Add translations
-	modLoader.add_translation_from_resource(trans_dir + "mod_chonky_text.en.translation")
+	ModLoaderMod.add_translation(trans_dir + "mod_chonky_text.en.translation")
 
 
 func _ready()->void:
 	var chonky_data = load("res://items/characters/chunky/chunky_data.tres")
 	chonky_data.name = "CHONKY_NAME_FIX"
 
-	ModLoaderUtils.log_info("Ready", CHONKY_LOG)
+	ModLoaderLog.info("Ready", CHONKY_LOG)
